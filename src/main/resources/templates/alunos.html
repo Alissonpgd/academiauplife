@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -66,9 +66,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Alisson Rodrigo da Silva</td>
+            <tr th:each="alunos : ${alunos}">
+                <td th:text="${alunos.id}" scope="row"></td>
+                <td th:text="${alunos.nome}"name="nome"></td>
                 <td>
                     <div class="box">
                         PEN
@@ -162,7 +162,7 @@
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="modal-body">
+                <form method="post" action="/create" class="modal-body">
                     <div class="principal">
                         <!-- 
                         <form>
@@ -197,7 +197,7 @@
                         <div class="final">
                             <div>
                                 <label class="data">Cadastro</label>
-                                <input type="date" name="date" id="data">
+                                <input type="date" name="data" id="data">
                             </div>
                             <div>
                                 <label class="valor">Valor</label>
@@ -207,7 +207,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: none;">Close</button>
-                        <button type="button" class="btn btn-primary" style="background-color: olive; border: none;">Salvar Aluno</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: olive; border: none;">Salvar Aluno</button>
                     </div>
                 </form>
             </div>
